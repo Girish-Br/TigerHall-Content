@@ -54,7 +54,8 @@
     width: 100%;
     height: 200px;
     /* Fixed height for the image container */
-    background-color: #64C8C8; /* Background color */
+    background-color: #64C8C8;
+    /* Background color */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,17 +144,18 @@
 }
 
 .card-actions .chakra-icon-button {
-    background: rgba(0, 0, 0, 0.1);
     /* Light background for the buttons */
     border-radius: 50%;
     /* Circular buttons */
     padding: 4px;
     /* Adjust padding */
+    color: orange;
+    /* Set icon color to orange */
 }
 
 .card-actions .chakra-icon-button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    /* Darker background on hover */
+    color: darkorange;
+    /* Darker orange on hover for icons */
 }
 
 .content-image {
@@ -167,6 +169,22 @@
     /* Light border to separate image from content */
 }
 
+.header-container {
+    width: 100%;
+    position: fixed;
+    top: 20px;
+    margin-bottom: 10px;
+    /* Adjust top and right to position the search box */
+    z-index: 1000;
+    /* Ensure the search box stays above other content */
+}
+
+.search-box-container {
+    font-size: 0.9em;
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .content-card {
@@ -174,6 +192,10 @@
         /* Allow card to take full width on smaller screens */
         max-width: none;
         /* Remove max-width constraint */
+    }
+
+    .search-box-container {
+        justify-content: center !important;
     }
 }
 
@@ -192,5 +214,9 @@
     .content-expert {
         font-size: 0.7em;
         /* Adjust font size for very small screens */
+    }
+
+    .search-box-container {
+        justify-content: center !important;
     }
 }

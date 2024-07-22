@@ -32,7 +32,7 @@ const ContentList: React.FC = () => {
         body: JSON.stringify({
           query: `
             query {
-              contentCards(filter: {limit: 20, keywords: "${term}", types: [PODCAST], offset: ${page * 20 - 20}}) {
+              contentCards(filter: {limit: 20, keywords: "${term}", types: [PODCAST], offset: ${page * 2 - 2}}) {
                 edges {
                   ... on Podcast {
                     name
@@ -89,21 +89,26 @@ const ContentList: React.FC = () => {
 
   return (
     <Box p="4">
-      <Heading
-        as="h1"
-        size="lg"
-        color="orange.500" // Orange color
-        mb="4"
-        fontWeight="bold" // Bold font weight
-      >
-        TigerHall Content
-      </Heading>
-      <Input
-        placeholder="Search content..."
-        value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
-        className="search-box"
-      />
+      <Box>
+        <Heading
+          as="h1"
+          size="lg"
+          color="orange.500" // Orange color
+          mb="4"
+          fontWeight="bold" // Bold font weight
+        >
+          TigerHall Content
+        </Heading>
+      </Box>
+      <Box className="search-box-container">
+        <Input
+          placeholder="Search content..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          className='search-box'
+          width="200px"
+        />
+      </Box>
       {loading &&
         <Flex justify="center">
           <Loader />

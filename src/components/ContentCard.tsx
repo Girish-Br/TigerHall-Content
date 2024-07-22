@@ -63,10 +63,14 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, imageUri, categories, 
                         icon={<FaShareAlt />}
                         aria-label="Share"
                         mr="2"
+                        color="orange"
+                        variant="outline"
                     />
                     <IconButton
                         icon={<FaBookmark />}
                         aria-label="Bookmark"
+                        color="orange"
+                        variant="outline"
                     />
                 </Flex>
             </Box>
