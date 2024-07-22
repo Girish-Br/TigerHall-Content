@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ContentCard from './ContentCard';
-import Loading from './Loading';
+import Loader from './Loader';
 import { Box, Input, Flex, Heading } from '@chakra-ui/react';
 import useDebounce from '../hooks/useDebounce';
 
@@ -94,10 +94,9 @@ const ContentList: React.FC = () => {
         size="lg"
         color="orange.500" // Orange color
         mb="4"
-        textTransform="uppercase" // Capitalize text
         fontWeight="bold" // Bold font weight
       >
-        TigerHall
+        TigerHall Content
       </Heading>
       <Input
         placeholder="Search content..."
@@ -105,7 +104,10 @@ const ContentList: React.FC = () => {
         onChange={e => setSearchTerm(e.target.value)}
         className="search-box"
       />
-      {loading && <Loading />}
+      {loading &&
+        <Flex justify="center">
+          <Loader />
+        </Flex>}
       <Flex direction="row" wrap="wrap" justify="center" mt="4">
         {contents.map(content => (
           <ContentCard

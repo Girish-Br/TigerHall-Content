@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, span, Image, Flex, IconButton } from '@chakra-ui/react';
 import { FaShareAlt, FaBookmark } from 'react-icons/fa';
 import '../styling/ContentCard.css'; // Ensure this path is correct
+import { useResizeImage } from '../hooks/useResizeImage';
 
 interface ContentCardProps {
     title: string;
@@ -17,12 +18,13 @@ const capitalize = (str: string) => {
 const ContentCard: React.FC<ContentCardProps> = ({ title, imageUri, categories, experts }) => {
 
     const categoryNames = categories.map(cat => capitalize(cat.name)).join(', ');
+    const resizedImageUri = useResizeImage(imageUri, 320, 200);
 
     return (
         <Box className="content-card" borderWidth="1px" borderRadius="lg" overflow="hidden" m="4">
             {imageUri &&
-                <Box>
-                    <Image src={imageUri} alt={title} className="content-image" />
+                <Box className="content-image-container">
+                    <Image src={resizedImageUri} alt={title} className="content-image" />
                 </Box>
             }
             <Box className='content-body'>
