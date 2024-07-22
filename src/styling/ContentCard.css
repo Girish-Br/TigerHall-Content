@@ -50,9 +50,14 @@
     /* Thumb color on hover */
 }
 
+.tigerhall-icon{
+    width: 30px !important;
+    height: 30px !important;
+}
+
 .content-image-container {
     width: 100%;
-    height: 200px;
+    height: 180px;
     /* Fixed height for the image container */
     background-color: #64C8C8;
     /* Background color */

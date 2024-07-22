@@ -5,7 +5,7 @@ import "./styling/App.css"
 
 const App: React.FC = () => (
   <ChakraProvider>
-    <Box bg="black" textAlign="center" fontSize="xl">
+    <Box bg="#151617" textAlign="center" fontSize="xl">
       <ContentList />
     </Box>
   </ChakraProvider>

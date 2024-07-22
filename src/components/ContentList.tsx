@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ContentCard from './ContentCard';
 import Loader from './Loader';
-import { Box, Input, Flex, Heading } from '@chakra-ui/react';
+import { Box, Input, Flex, Heading, Image, Center } from '@chakra-ui/react';
 import useDebounce from '../hooks/useDebounce';
+import tigerhallIcon from "../assets/tigerhall-icon.svg"
 
 interface Content {
   id: string;
@@ -89,16 +90,21 @@ const ContentList: React.FC = () => {
 
   return (
     <Box p="4">
-      <Box>
-        <Heading
-          as="h1"
-          size="lg"
-          color="orange.500" // Orange color
-          mb="4"
-          fontWeight="bold" // Bold font weight
-        >
-          TigerHall Content
-        </Heading>
+      <Box display="flex" justifyContent="space-between" alignContent="center">
+        <Box justifyContent="flex-start">
+          <Image src={tigerhallIcon} alt="Tigerhall icon" className="tigerhall-icon" />
+        </Box>
+        <Box flex="1" textAlign="center" alignContent="center">
+          <Heading
+            as="h1"
+            size="lg"
+            color="orange.500" // Orange color
+            mb="4"
+            fontWeight="bold" // Bold font weight
+          >
+            TigerHall Content
+          </Heading>
+        </Box>
       </Box>
       <Box className="search-box-container">
         <Input
