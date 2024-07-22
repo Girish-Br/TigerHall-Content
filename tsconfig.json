@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "allowJs": true,
+        "jsx": "react",
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "types": [
+            "react",
+            "react-dom"
+        ],
+    },
+    "include": [
+        "src/**/*",
+        "node_modules/@types"
+    ]
+}

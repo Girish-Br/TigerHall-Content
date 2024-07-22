@@ -1,0 +1,85 @@
+.content-card {
+    border: 1px solid #e2e8f0;
+    /* Border color */
+    border-radius: 8px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Hide overflow */
+    padding: 16px;
+    /* Padding inside the card */
+    margin: 8px;
+    /* Margin around the card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
+    background-color: #fff;
+    /* Background color */
+}
+
+.content-card img {
+    width: 100%;
+    /* Full width */
+    border-radius: 4px;
+    /* Rounded corners for the image */
+    margin-bottom: 16px;
+    /* Space below the image */
+}
+
+.content-card .title {
+    font-weight: bold;
+    /* Bold text */
+    font-size: 1.25rem;
+    /* Font size for title */
+    display: block;
+    /* Display as block */
+    margin-bottom: 8px;
+    /* Space below title */
+}
+
+.content-card .description {
+    margin-bottom: 16px;
+    /* Space below description */
+}
+
+.content-card .categories {
+    display: flex;
+    /* Flexbox for categories */
+    flex-wrap: wrap;
+    /* Wrap if necessary */
+    gap: 8px;
+    /* Space between tags */
+    margin-bottom: 16px;
+    /* Space below categories */
+}
+
+.content-card .category-tag {
+    background-color: #e2e8f0;
+    /* Gray background */
+    color: #4a5568;
+    /* Dark gray text */
+    padding: 4px 8px;
+    /* Padding inside tag */
+    border-radius: 4px;
+    /* Rounded corners for tags */
+}
+
+.content-card .experts {
+    margin-top: 16px;
+    /* Space above experts */
+}
+
+.content-card .expert {
+    display: block;
+    /* Display as block */
+}
+
+.content-card .expert-name {
+    font-weight: bold;
+    /* Bold text for name */
+}
+
+.content-card .expert-company {
+    color: #4a5568;
+    /* Gray text */
+    font-weight: bold;
+    /* Bold text */
+}
