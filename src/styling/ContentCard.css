@@ -1,4 +1,3 @@
-/* ContentCard.css */
 .content-card {
     position: relative;
     width: 320px;
@@ -68,6 +67,9 @@
     /* Padding around the content */
     overflow-y: auto;
     /* Vertical scroll if content overflows */
+    text-align: left;
+    /* Align text to the left */
+    margin-left: 10px;
 }
 
 .content-title {
@@ -76,6 +78,8 @@
     font-weight: bold;
     margin-bottom: 8px;
     /* Space between title and description */
+    text-align: left;
+    /* Align text to the left */
 }
 
 .content-description {
@@ -83,25 +87,33 @@
     /* Adjust font size of the description */
     margin-bottom: 8px;
     /* Space between description and categories */
+    text-align: left;
+    /* Align text to the left */
 }
 
 .content-categories,
 .content-experts {
-    margin-top: 8px;
-    margin-bottom: 15px;
+    margin-top: 4px;
+    margin-bottom: 10px;
     /* Space for bottom margin */
+    text-align: left;
+    /* Align text to the left */
 }
 
 .content-category {
     color: grey;
     font-size: 0.8em;
     /* Adjust font size of the category */
+    text-align: left;
+    /* Align text to the left */
 }
 
 .content-expert {
     color: grey;
     font-size: 0.8em;
     /* Adjust font size of the expert details */
+    text-align: left;
+    /* Align text to the left */
 }
 
 .card-actions {
@@ -129,6 +141,17 @@
 .card-actions .chakra-icon-button:hover {
     background: rgba(0, 0, 0, 0.2);
     /* Darker background on hover */
+}
+
+.content-image {
+    width: 100%;
+    /* Make the image fill the card width */
+    height: 200px;
+    /* Fixed height for the image */
+    object-fit: cover;
+    /* Ensure the image covers the area without distortion */
+    border-bottom: 1px solid #e2e2e2;
+    /* Light border to separate image from content */
 }
 
 /* Responsive Design */
