@@ -1,21 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ContentCard from './ContentCard';
 import Loading from './Loading';
-import { Box, Input, SimpleGrid } from '@chakra-ui/react';
+import { Box, Input, Flex, Heading } from '@chakra-ui/react';
 import useDebounce from '../hooks/useDebounce';
 
 interface Content {
   id: string;
-  title: string;
-  description: string;
-  imageUri?: string;
-  categories?: { name: string }[];
-  experts?: {
-    firstName: string;
-    lastName: string;
-    title: string;
-    company: string;
-  }[];
+  name: string;
+  image: { uri: string };
+  categories: { name: string }[];
+  experts: { firstName: string; lastName: string; title: string; company: string }[];
 }
 
 const ContentList: React.FC = () => {
@@ -38,7 +32,7 @@ const ContentList: React.FC = () => {
         body: JSON.stringify({
           query: `
             query {
-              contentCards(filter: {limit: 20, keywords: "${term}", types: [PODCAST]}) {
+              contentCards(filter: {limit: 20, keywords: "${term}", types: [PODCAST], offset: ${page * 20 - 20}}) {
                 edges {
                   ... on Podcast {
                     name
@@ -65,8 +59,9 @@ const ContentList: React.FC = () => {
       if (result.errors) {
         throw new Error(result.errors[0].message);
       }
-      setContents(prev => (page === 1 ? result.data.contentCards.edges : [...prev, ...result.data.contentCards.edges]));
-      setHasMore(result.data.contentCards.edges.length > 0);
+      const newContents = result.data.contentCards.edges;
+      setContents(prev => [...prev, ...newContents]);
+      setHasMore(newContents.length > 0);
     } catch (error) {
       console.error('Error fetching content:', error);
     } finally {
@@ -75,48 +70,53 @@ const ContentList: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetchContents(1, debouncedSearchTerm);
-  }, [debouncedSearchTerm, fetchContents]);
+    fetchContents(page, debouncedSearchTerm);
+  }, [page, debouncedSearchTerm, fetchContents]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading || !hasMore) {
-        return;
+      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100) {
+        // Trigger fetch when scrolled near the bottom
+        if (!loading && hasMore) {
+          setPage(prevPage => prevPage + 1);
+        }
       }
-      setPage(prevPage => prevPage + 1);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, hasMore]);
 
-  useEffect(() => {
-    if (page > 1) {
-      fetchContents(page, debouncedSearchTerm);
-    }
-  }, [page, debouncedSearchTerm, fetchContents]);
-
   return (
     <Box p="4">
+      <Heading
+        as="h1"
+        size="lg"
+        color="orange.500" // Orange color
+        mb="4"
+        textTransform="uppercase" // Capitalize text
+        fontWeight="bold" // Bold font weight
+      >
+        TigerHall
+      </Heading>
       <Input
         placeholder="Search content..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        mb="4"
+        className="search-box"
       />
       {loading && <Loading />}
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="4">
+      <Flex direction="row" wrap="wrap" justify="center" mt="4">
         {contents.map(content => (
           <ContentCard
             key={content.id}
-            title={content.title}
-            description={content.description}
-            imageUri={content.image?.uri}
-            categories={content.categories?.map(category => category.name)}
+            title={content.name}
+            imageUri={content.image.uri}
+            categories={content.categories}
             experts={content.experts}
           />
         ))}
-      </SimpleGrid>
+      </Flex>
     </Box>
   );
 };

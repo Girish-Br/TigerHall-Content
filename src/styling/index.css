@@ -1,0 +1,23 @@
+/* App.css or index.css */
+
+/* Apply a black background to the entire page */
+body {
+    background-color: black;
+    /* Set background color to black */
+    color: white;
+    /* Set text color to white for better readability */
+    margin: 0;
+    /* Remove default margin */
+    font-family: 'Roboto Slab', serif;
+    /* Use the same font for consistency */
+}
+
+/* Optional: Set styles for container or root element */
+#root {
+    min-height: 100vh;
+    /* Ensure root element takes full viewport height */
+    display: flex;
+    /* Use flexbox to align children */
+    flex-direction: column;
+    /* Stack children vertically */
+}

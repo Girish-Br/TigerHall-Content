@@ -1,85 +1,160 @@
+/* ContentCard.css */
 .content-card {
-    border: 1px solid #e2e8f0;
-    /* Border color */
+    position: relative;
+    width: 320px;
+    /* Fixed width */
+    height: 400px;
+    /* Fixed height */
+    margin: 10px;
+    /* Adjust margin to control spacing between cards */
     border-radius: 8px;
     /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Smooth transition for hover effects */
     overflow: hidden;
-    /* Hide overflow */
-    padding: 16px;
-    /* Padding inside the card */
-    margin: 8px;
-    /* Margin around the card */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Shadow effect */
-    background-color: #fff;
-    /* Background color */
-}
-
-.content-card img {
-    width: 100%;
-    /* Full width */
-    border-radius: 4px;
-    /* Rounded corners for the image */
-    margin-bottom: 16px;
-    /* Space below the image */
-}
-
-.content-card .title {
-    font-weight: bold;
-    /* Bold text */
-    font-size: 1.25rem;
-    /* Font size for title */
-    display: block;
-    /* Display as block */
-    margin-bottom: 8px;
-    /* Space below title */
-}
-
-.content-card .description {
-    margin-bottom: 16px;
-    /* Space below description */
-}
-
-.content-card .categories {
+    /* Ensure content doesn't overflow the card */
     display: flex;
-    /* Flexbox for categories */
-    flex-wrap: wrap;
-    /* Wrap if necessary */
+    /* Stack child elements vertically */
+    flex-direction: column;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow on hover */
+}
+
+/* WebKit Browsers (Chrome, Safari) */
+.content-body::-webkit-scrollbar {
+    width: 6px;
+    /* Thin width */
+}
+
+.content-body::-webkit-scrollbar-track {
+    background: #e2e2e2;
+    /* Track color */
+}
+
+.content-body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Thumb color */
+    border-radius: 3px;
+    /* Rounded corners */
+}
+
+.content-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Thumb color on hover */
+}
+
+.content-image {
+    width: 100%;
+    /* Make the image fill the card width */
+    height: 200px;
+    /* Fixed height for the image */
+    object-fit: cover;
+    /* Ensure the image covers the area without distortion */
+    border-bottom: 1px solid #e2e2e2;
+    /* Light border to separate image from content */
+}
+
+.content-body {
+    flex: 1;
+    /* Take remaining space after image */
+    padding: 5px;
+    /* Padding around the content */
+    overflow-y: auto;
+    /* Vertical scroll if content overflows */
+}
+
+.content-title {
+    font-size: 1em;
+    /* Adjust font size of the title */
+    font-weight: bold;
+    margin-bottom: 8px;
+    /* Space between title and description */
+}
+
+.content-description {
+    font-size: 0.85em;
+    /* Adjust font size of the description */
+    margin-bottom: 8px;
+    /* Space between description and categories */
+}
+
+.content-categories,
+.content-experts {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    /* Space for bottom margin */
+}
+
+.content-category {
+    color: grey;
+    font-size: 0.8em;
+    /* Adjust font size of the category */
+}
+
+.content-expert {
+    color: grey;
+    font-size: 0.8em;
+    /* Adjust font size of the expert details */
+}
+
+.card-actions {
+    position: absolute;
+    /* Fix position within the card */
+    bottom: 10px;
+    /* Distance from bottom */
+    right: 10px;
+    /* Distance from right */
+    display: flex;
+    /* Align icons horizontally */
     gap: 8px;
-    /* Space between tags */
-    margin-bottom: 16px;
-    /* Space below categories */
+    /* Space between icons */
 }
 
-.content-card .category-tag {
-    background-color: #e2e8f0;
-    /* Gray background */
-    color: #4a5568;
-    /* Dark gray text */
-    padding: 4px 8px;
-    /* Padding inside tag */
-    border-radius: 4px;
-    /* Rounded corners for tags */
+.card-actions .chakra-icon-button {
+    background: rgba(0, 0, 0, 0.1);
+    /* Light background for the buttons */
+    border-radius: 50%;
+    /* Circular buttons */
+    padding: 4px;
+    /* Adjust padding */
 }
 
-.content-card .experts {
-    margin-top: 16px;
-    /* Space above experts */
+.card-actions .chakra-icon-button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    /* Darker background on hover */
 }
 
-.content-card .expert {
-    display: block;
-    /* Display as block */
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-card {
+        width: 100%;
+        /* Allow card to take full width on smaller screens */
+        max-width: none;
+        /* Remove max-width constraint */
+    }
 }
 
-.content-card .expert-name {
-    font-weight: bold;
-    /* Bold text for name */
-}
+@media (max-width: 480px) {
+    .content-title {
+        font-size: 0.9em;
+        /* Adjust font size for very small screens */
+    }
 
-.content-card .expert-company {
-    color: #4a5568;
-    /* Gray text */
-    font-weight: bold;
-    /* Bold text */
+    .content-description {
+        font-size: 0.75em;
+        /* Adjust font size for very small screens */
+    }
+
+    .content-category,
+    .content-expert {
+        font-size: 0.7em;
+        /* Adjust font size for very small screens */
+    }
 }
