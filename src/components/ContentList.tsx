@@ -97,7 +97,7 @@ const ContentList: React.FC = () => {
   }, [loading, hasMore]);
 
   return (
-    <Box p="5" m="5">
+    <Box p="4" m="4">
       <Flex
         justifyContent="space-between"
         alignItems="center"

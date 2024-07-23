@@ -37,7 +37,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, imageUri, categories, 
                         <span>No Categories</span>
                     )}
                 </Box>
-                <span className="content-title" fontWeight="bold" fontSize="xl" mb="2">
+                <span className="content-title" fontWeight="bold" fontSize="xl">
                     {capitalize(title)}
                 </span>
                 <Box className="content-experts">
