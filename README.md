@@ -1,6 +1,6 @@
 # Tigerhall Content
 
-## Click here: https://girish-br.github.io/TigerHall-Content/
+## Why you want to clone the project when you can acces me from here: https://girish-br.github.io/TigerHall-Content/
 
 A single-page application for searching Tigerhall content.
 
