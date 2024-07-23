@@ -1,5 +1,7 @@
 # Tigerhall Content
 
+## Click here: https://girish-br.github.io/TigerHall-Content/
+
 A single-page application for searching Tigerhall content.
 
 ## Technologies
@@ -7,7 +9,6 @@ A single-page application for searching Tigerhall content.
 - TypeScript
 - React
 - Chakra-UI
-- GraphQL
 
 ## Features
 1.Search Content: Search for Tigerhall content using a keyword filter.
@@ -24,12 +25,8 @@ A single-page application for searching Tigerhall content.
 Clone the repository:
 git clone <repository-url>
 cd tigerhall-content
-Install dependencies:
-
-npm install
-Start the development server:
-
-npm start
+Install dependencies: npm install
+Start the development server:npm start
 Open your browser and navigate to http://localhost:3000 to see the application in action.
 
 ## Usage
