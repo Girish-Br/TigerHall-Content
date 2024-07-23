@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ContentCard from './ContentCard';
 import Loader from './Loader';
-import { Box, Input, Flex, Heading, Image, Center } from '@chakra-ui/react';
+import { Box, Input, Flex, Heading, Image } from '@chakra-ui/react';
 import useDebounce from '../hooks/useDebounce';
-import tigerhallIcon from "../assets/tigerhall-icon.svg"
+import tigerhallIcon from "../assets/tigerhall-icon.svg";
 
 interface Content {
   id: string;
@@ -33,9 +33,10 @@ const ContentList: React.FC = () => {
         body: JSON.stringify({
           query: `
             query {
-              contentCards(filter: {limit: 20, keywords: "${term}", types: [PODCAST], offset: ${page * 2 - 2}}) {
+              contentCards(filter: {limit: 40, keywords: "${term}", types: [PODCAST], offset: ${page * 1 - 1}}) {
                 edges {
                   ... on Podcast {
+                    id
                     name
                     image {
                       uri
@@ -61,7 +62,7 @@ const ContentList: React.FC = () => {
         throw new Error(result.errors[0].message);
       }
       const newContents = result.data.contentCards.edges;
-      setContents(prev => [...prev, ...newContents]);
+      setContents(prev => page === 1 ? newContents : [...prev, ...newContents]);
       setHasMore(newContents.length > 0);
     } catch (error) {
       console.error('Error fetching content:', error);
@@ -71,7 +72,15 @@ const ContentList: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetchContents(page, debouncedSearchTerm);
+    setContents([]); // Clear contents when search term changes
+    setPage(1); // Reset page to 1 when search term changes
+    fetchContents(1, debouncedSearchTerm); // Fetch new search results from page 1
+  }, [debouncedSearchTerm, fetchContents]);
+
+  useEffect(() => {
+    if (page > 1) {
+      fetchContents(page, debouncedSearchTerm);
+    }
   }, [page, debouncedSearchTerm, fetchContents]);
 
   useEffect(() => {
@@ -83,42 +92,38 @@ const ContentList: React.FC = () => {
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, hasMore]);
 
   return (
-    <Box p="4">
-      <Box display="flex" justifyContent="space-between" alignContent="center">
-        <Box justifyContent="flex-start">
-          <Image src={tigerhallIcon} alt="Tigerhall icon" className="tigerhall-icon" />
-        </Box>
-        <Box flex="1" textAlign="center" alignContent="center">
-          <Heading
-            as="h1"
-            size="lg"
-            color="orange.500" // Orange color
-            mb="4"
-            fontWeight="bold" // Bold font weight
-          >
-            TigerHall Content
+    <Box p="5" m="5">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        mb="4"
+        flexDirection={['column', 'column', 'row']} // Stack vertically on small screens
+      >
+        <Flex alignItems="center" mb={[2, 2, 0]}>
+          <Image src={tigerhallIcon} alt="Tigerhall icon" className="tigerhall-icon" mr="2" />
+          <Heading as="h1" size="md" color="orange.500">
+            TIGERHALL
+          </Heading>
+        </Flex>
+        <Box flex="1" textAlign="center" mb={[2, 2, 0]}>
+          <Heading size="md" color="orange.500">
+            UI Developer work
           </Heading>
         </Box>
-      </Box>
-      <Box className="search-box-container">
         <Input
           placeholder="Search content..."
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          className='search-box'
-          width="200px"
+          className="search-box"
+          width="250px"
+          textColor="white"
         />
-      </Box>
-      {loading &&
-        <Flex justify="center">
-          <Loader />
-        </Flex>}
+      </Flex>
       <Flex direction="row" wrap="wrap" justify="center" mt="4">
         {contents.map(content => (
           <ContentCard
@@ -130,6 +135,11 @@ const ContentList: React.FC = () => {
           />
         ))}
       </Flex>
+      {loading && (
+        <Flex justify="center" mt="4">
+          <Loader />
+        </Flex>
+      )}
     </Box>
   );
 };

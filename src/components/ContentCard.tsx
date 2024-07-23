@@ -21,7 +21,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, imageUri, categories, 
     const resizedImageUri = useResizeImage(imageUri, 320, 200);
 
     return (
-        <Box className="content-card" borderWidth="1px" borderRadius="lg" overflow="hidden" m="4">
+        <Box className="content-card" borderWidth="1px" borderRadius="lg" overflow="hidden">
             {imageUri &&
                 <Box className="content-image-container">
                     <Image src={resizedImageUri} alt={title} className="content-image" />

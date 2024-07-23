@@ -4,11 +4,11 @@
     /* Fixed width */
     height: 400px;
     /* Fixed height */
-    margin: 10px;
+    margin: 20px;
     /* Adjust margin to control spacing between cards */
     border-radius: 5px;
     /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3), 0 6px 20px rgba(255, 255, 255, 0.3); /* Subtle shadow */
     /* Subtle shadow */
     transition: transform 0.3s, box-shadow 0.3s;
     /* Smooth transition for hover effects */
@@ -223,5 +223,11 @@
 
     .search-box-container {
         justify-content: center !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .search-box-container {
+        margin-right: 5%;
     }
 }
