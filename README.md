@@ -26,11 +26,11 @@ git clone <repository-url>
 cd tigerhall-content
 Install dependencies:
 
-npm install
+npm install or npm install --legacy-peer-deps(if you face issue during dependency installation)
 Start the development server:
 
 npm start
-Open your browser and navigate to http://localhost:3000 to see the application in action.
+Open your browser and navigate to http://localhost:9000 to see the application in action.
 
 ## Usage
 Search Content: Use the search box on the right side to filter content by keywords.
