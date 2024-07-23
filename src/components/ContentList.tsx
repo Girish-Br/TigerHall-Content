@@ -106,13 +106,13 @@ const ContentList: React.FC = () => {
       >
         <Flex alignItems="center" mb={[2, 2, 0]}>
           <Image src={tigerhallIcon} alt="Tigerhall icon" className="tigerhall-icon" mr="2" />
-          <Heading as="h1" size="md" color="orange.500">
+          <Heading as="h1" size="md" color="orange.500" fontFamily="PP Formula">
             TIGERHALL
           </Heading>
         </Flex>
         <Box flex="1" textAlign="center" mb={[2, 2, 0]}>
-          <Heading size="md" color="orange.500">
-            UI Developer work
+          <Heading size="md" color="orange.500" fontFamily="PP Formula">
+            Front-end Assessment
           </Heading>
         </Box>
         <Input
