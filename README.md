@@ -1,5 +1,7 @@
 # Tigerhall Content
 
+## Why you want to clone the project when you can acces me from here: https://girish-br.github.io/TigerHall-Content/
+
 A single-page application for searching Tigerhall content.
 
 ## Technologies
@@ -7,18 +9,17 @@ A single-page application for searching Tigerhall content.
 - TypeScript
 - React
 - Chakra-UI
-- GraphQL
 
 ## Features
-1.Search Content: Search for Tigerhall content using a keyword filter.
-2.Loading Animation: Displays a loading animation during content fetch.
-3.Debounce: Implements a 300 ms debounce on the search input to optimize API calls.
-4.Infinite Scroll: Pagination with infinite scroll to load more content as the user scrolls down.
-5.Responsive Design: Ensures the application is usable on both desktop and mobile devices.
-6.Optimized Images: Resizes images fetched from the API for better performance.
-7.Custom Scrollbar: Stylish, thin, orange-colored scrollbar.
-8.Non-overlapping Card Content: Ensures card body content and icons do not overlap.
-9.Conditional Scrollbar Visibility: Main scrollbar is hidden initially and displayed only when scrolled to the bottom.
+- Search Content: Search for Tigerhall content using a keyword filter.
+- Loading Animation: Displays a loading animation during content fetch.
+- Debounce: Implements a 300 ms debounce on the search input to optimize API calls.
+- Infinite Scroll: Pagination with infinite scroll to load more content as the user scrolls down.
+- Responsive Design: Ensures the application is usable on both desktop and mobile devices.
+- Optimized Images: Resizes images fetched from the API for better performance.
+- Custom Scrollbar: Stylish, thin, orange-colored scrollbar.
+- Non-overlapping Card Content: Ensures card body content and icons do not overlap.
+- Conditional Scrollbar Visibility: Main scrollbar is hidden initially and displayed only when scrolled to the bottom.
 
 ## Instructions
 Clone the repository:
